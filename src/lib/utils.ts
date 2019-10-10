@@ -1,7 +1,7 @@
 import debug, { IDebugger } from 'debug';
 import { URL } from 'url';
 
-const mountRegex = /(\/\S+)(?:\/streamid=)(\d+)/;
+const mountRegex = /(\/\S+)(?:\/stream=)(\d+)/;
 
 export interface MountInfo {
   path: string;
@@ -16,7 +16,7 @@ export function getMountInfo (uri: string): MountInfo {
     streamId: -1
   };
 
-  if (urlObj.pathname.indexOf('streamid') > -1) {
+  if (urlObj.pathname.indexOf('stream') > -1) {
     const match = urlObj.pathname.match(mountRegex);
 
     if (match) {
